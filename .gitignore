@@ -1,0 +1,48 @@
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Large files
+*.safetensors
+*.bin
+*.dll
+*.lib
+*.onnx
+
+# Generated
+reports/
+uploads/
+outputs/
+*.log
+*.db
+*.db-shm
+*.db-wal
+
+# Cache
+.cache/
+huggingface/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Datasets
+datasets/
+vector_store/
+backup_final/
+backup_legacy/
+temp/
