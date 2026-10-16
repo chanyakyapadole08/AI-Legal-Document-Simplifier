@@ -37,82 +37,114 @@ def build_clause_title(clause: dict) -> str:
     return str(category).strip()
 
 
-def build_negotiation_items(clauses: list) -> list:
+GENERIC_ACTIONS = (
+    "clarify the scope, conditions, timelines",
+    "review and negotiate this clause with appropriate legal guidance",
+)
+
+
+def _norm(text) -> str:
+    return " ".join(str(text or "").lower().split())
+
+
+def _sentence_clip(text: str, max_chars: int = 240) -> str:
+    text = " ".join(str(text or "").split())
+    if len(text) <= max_chars:
+        return text
+    cut = text[:max_chars]
+    end = max(cut.rfind(". "), cut.rfind("; "))
+    if end > max_chars * 0.5:
+        return cut[:end + 1]
+    return cut.rsplit(" ", 1)[0] + "..."
+
+
+def _is_copy_of_original(safer: str, original: str) -> bool:
+    """The MEDIUM-risk fallback just repeats the original clause as 'safer'."""
+    a, b = _norm(safer)[:400], _norm(original)[:400]
+    if not a or not b:
+        return False
+    if a == b or a[:120] in _norm(original) or b[:120] in _norm(safer):
+        return True
+    from difflib import SequenceMatcher
+    return SequenceMatcher(None, a, b).quick_ratio() > 0.9
+
+
+def build_negotiation_items(clauses: list, limit: int = 15) -> list:
+    """One card per risky clause. Suggestions are clause-specific:
+    topic advice, the LLM's own action (if not canned) and a real rewrite
+    (if it differs from the original). Identical cards are dropped."""
 
     items = []
     seen = set()
 
+    # actions repeated on 3+ clauses are canned text, not real advice
+    counts = {}
+    for c in clauses:
+        key = _norm(c.get("action"))
+        if key:
+            counts[key] = counts.get(key, 0) + 1
+
+    def is_generic(action: str) -> bool:
+        key = _norm(action)
+        return (
+            not key
+            or counts.get(key, 0) >= 3
+            or any(g in key for g in GENERIC_ACTIONS)
+        )
+
     sorted_clauses = sorted(
         clauses,
-        key=lambda c: risk_sort_value(
-            c.get("risk_level", "LOW")
-        )
+        key=lambda c: risk_sort_value(c.get("risk_level", "LOW"))
     )
 
     for clause in sorted_clauses:
 
-        risk = str(
-            clause.get("risk_level", "LOW")
-        ).upper()
+        risk = str(clause.get("risk_level", "LOW")).upper()
 
-        if risk == "LOW":
+        if risk not in ("HIGH", "MEDIUM"):
             continue
 
-        issue = clause.get(
-            "detected_issue",
-            "Legal risk"
-        )
-
-        key = (
-            str(issue).lower(),
-            risk
-        )
-
-        if key in seen:
-            continue
-
-        seen.add(key)
-
-        advice = clause.get(
-            "negotiation_advice",
-            ""
-        )
-
-        action = clause.get(
-            "action",
-            ""
-        )
+        issue = clause.get("detected_issue") or "Legal risk"
+        action = clause.get("action") or ""
+        advice = clause.get("negotiation_advice") or ""
+        safer = clause.get("safer_clause") or ""
+        original = clause.get("original_clause") or ""
 
         suggestions = []
 
+        # 1) topic/issue advice first (always clause specific)
         if advice:
-            suggestions.append(
-                shorten_text(
-                    advice,
-                    350
-                )
-            )
+            suggestions.append(_sentence_clip(advice, 320))
 
-        if action and action not in suggestions:
-            suggestions.append(
-                shorten_text(
-                    action,
-                    350
-                )
-            )
+        # 2) the LLM's own action, only if it is not canned text
+        if action and not is_generic(action):
+            text = _sentence_clip(action, 320)
+            if _norm(text) not in [_norm(x) for x in suggestions]:
+                suggestions.append(text)
+
+        # 3) a real rewrite, only if it differs from the original clause
+        if safer and not _is_copy_of_original(safer, original):
+            suggestions.append("Suggested wording: " + _sentence_clip(safer, 240))
+
+        suggestions = suggestions[:3]
+        signature = tuple(_norm(x) for x in suggestions)
+
+        if not suggestions or signature in seen:
+            continue
+
+        seen.add(signature)
 
         items.append({
-
             "problem": issue,
-
-            "suggested_negotiation":
-                suggestions[:2],
-
+            "suggested_negotiation": suggestions,
             "priority": risk,
-
-            "clause_no":
-                clause.get("clause_id")
+            "clause_no": clause.get("clause_id"),
+            "clause_heading": shorten_text(clause.get("heading"), 80),
+            "reason": shorten_text(clause.get("reason"), 300),
         })
+
+        if len(items) >= limit:
+            break
 
     return items
 

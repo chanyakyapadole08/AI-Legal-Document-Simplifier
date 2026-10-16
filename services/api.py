@@ -4,6 +4,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from services.summarizer import summarize_document
 from services.translator import run_translation_pipeline
+from services.plain_language import build_plain_translations, translate_text
 import shutil
 import os
 import os
@@ -163,10 +164,12 @@ async def analyze_pdf_endpoint(file: UploadFile = File(...)):
         # =====================================================
         # STEP 3 — TRANSLATION
         # =====================================================
-        translation_results = run_translation_pipeline(
-            cleaned_text,
-            ["english", "hindi", "marathi"]
+        translation_results = build_plain_translations(
+            summary,
+            full_report,
+            cleaned_text
         )
+        translation_sources = translation_results.pop("_sources", {})
 
         translation = {
             "results": translation_results,
@@ -251,6 +254,8 @@ async def analyze_pdf_endpoint(file: UploadFile = File(...)):
 
         "translation": translation["results"],
 
+        "translation_sources": translation_sources,
+
         "translation_errors": translation["errors"],
 
         "report": simple_report,
@@ -262,6 +267,28 @@ async def analyze_pdf_endpoint(file: UploadFile = File(...)):
         response["full_report"] = full_report
 
     return response
+
+class PlainTranslateInput(BaseModel):
+    text: str
+    language: str
+
+
+@app.post("/agent/translate")
+def agent_translate(data: PlainTranslateInput):
+    language = data.language.strip().lower()
+    if language not in ("hindi", "marathi"):
+        raise HTTPException(status_code=400, detail="Language must be hindi or marathi")
+    if not data.text.strip():
+        raise HTTPException(status_code=400, detail="Text cannot be empty")
+
+    result = translate_text(data.text, language)
+    if not result:
+        raise HTTPException(
+            status_code=503,
+            detail="The AI translation service is busy. Please try again in a minute."
+        )
+    return {"status": "success", "language": language, "text": result}
+
 
 @app.post("/agent/pdf")
 async def analyze_pdf_agent_alias(file: UploadFile = File(...)):

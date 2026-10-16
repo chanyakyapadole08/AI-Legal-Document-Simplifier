@@ -676,13 +676,23 @@ def _google_translate(text: str, target: str) -> str:
     return "\n\n".join(parts)
 
 
+def _nllb_hindi(text: str) -> str:
+    global _marathi_bos_token_id
+    load_marathi_model()
+    original = _marathi_bos_token_id
+    _marathi_bos_token_id = _marathi_tokenizer.convert_tokens_to_ids("hin_Deva")
+    try:
+        return _nllb_marathi(text)
+    finally:
+        _marathi_bos_token_id = original
+
+
 def translate_to_hindi(text: str) -> str:
     try:
         return _google_translate(text, "hi")
     except Exception as e:
-        print(f"[Translator] Google failed ({e}); using LibreTranslate")
-        return _libre_hindi(text)
-
+        print(f"[Translator] Google failed ({e}); using NLLB")
+        return _nllb_hindi(text)
 
 def translate_to_marathi(text: str) -> str:
     try:

@@ -558,7 +558,7 @@ def analyze_clause_v2(clause: str) -> dict:
     # NEGOTIATION
     # --------------------------------------------------------
 
-    negotiation = suggest_negotiation(risk_result)
+    negotiation = suggest_negotiation(risk_result, clause)
 
     # --------------------------------------------------------
     # REASONING
@@ -762,7 +762,7 @@ def analyze_document_v2(pdf_path: str) -> dict:
         clause_text = safe_string(clause_obj.get("text", ""))
         risk_result = normalize_risk_result(clause_text, risk_results[index])
         risk_level = normalize_risk_level(risk_result.get("risk_level", "MEDIUM"))
-        negotiation = suggest_negotiation(risk_result)
+        negotiation = suggest_negotiation(risk_result, clause_text)
 
         if risk_level == "LOW":
             reasoning = low_risk_reasoning(clause_text)

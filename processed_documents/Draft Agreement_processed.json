@@ -1,0 +1,136 @@
+{
+  "version": "3.0",
+  "architecture": "Gemini semantic risk classification in batches + legal risk calibration + deterministic safety normalization + FAISS/BM25 RAG + batched Gemini reasoning for HIGH-risk clauses",
+  "classification_model": "gemini-3.8-flash",
+  "extraction_method": "pymupdf_or_ocr",
+  "cleaned_text": "A G R E E M E N T\nThis Agreement is made and entered into at Mumbai, and effective on this\n__________ day of____________ of Two Thousand Eighteen.\nBETWEEN\nThe Municipal Corporation of Greater Mumbai a body corporate having\nperpetual succession and a common seal constituted by the Mumbai Municipal\nCorporation Act 1888, hereinafter referred to “MCGM”\nREPRESENTED BY\nSmt. Nidhi Choudhari, Deputy Municipal Commissioner (Special), having\noffice at 3rd Floor, Annexe Building, Municipal Head Office, Mahapalika Marg,\nMumbai- 400001, hereinafter referred to as “DMC(Special)” (which expression shall\nunless repugnant to the context or meaning thereof be deemed to mean and include\nthe successor or successors for the time being holding the office of the Deputy\nMunicipal Commissioner (Special)) of the First Part;\nAND\nShri/ Smt. ________________________________, an Indian Inhabitant of\nhaving Sanad Registration No. ________________________ of ___________ and\nbeing the Member of _______________ Bar Association of the ____________ Court;\nhereinafter referred to as “Sr. Panel Advocate” (which expression shall unless\nrepugnant to the context or meaning thereof be deemed to mean and include his\nheirs, executors, administrators and assigns) of the Second Part;\nWHEREAS the Municipal Commissioner for Greater Mumbai has interallia\ndeputed under Section 56 of the Mumbai Municipal Corporation Act, 1888 his powers,\nfunctions and duties to the Deputy Municipal Commissioner (Special), for purpose of\nthis Agreement.\nAND WHEREAS the Municipal Commissioner vide its order under no.\nMGC/A/4503 dated 10.10.2017 had accorded sanction for Empanelment of\nAdvocates for Sr. Panel (A, B and C) of MCGM, who have experience in handling\ncourt matters in the Hon'ble Supreme Court of India and in the Hon'ble High Courts,\non behalf of MCGM.\nAND WHEREAS accordingly the MCGM had invited Expression of\nInterests (EOIs) in the prescribed format through E-mail from eligible candidates for\nEmpanelment of Advocates for Sr. Panel 'A', 'B' & 'C' of MCGM for handling court\nmatters in the Hon'ble Supreme Court of India and in the Hon'ble High Courts on\nbehalf of MCGM.\nAND WHEREAS the party of the Second Part has shown willingness to\nrepresent the MCGM as an Advocate of Sr. Panel (A / B / C / Supreme Court\nStanding Counsel / Advocate on Record) for the MCGM, and has submitted\nDeclaration to that effect, whereby agreeing to have read and understood the terms\nand conditions of the empanelment as displayed on MCGM portal and to abide by the\nsame and to maintain absolute secrecy about the cases of MCGM as required under\nthe Act, Rules and Regulations there under.\nAND WHEREAS it is felt prudent to utilize, the expertise and experience of\nthe party of the Second Part by empanelment as an Advocate of Sr. Panel (A / B / C /\nSupreme Court Standing Counsel / Advocate on Record) for the MCGM\nAND WHEREAS the Municipal Commissioner vide its order under no.\nMGC/F/6674 dtd. 25.06.2018 has granted sanction for lists of empaneled Advocates\nof Sr. Panel (A, B, C, Supreme Court Standing Counsel, Advocate on Record) for\nMCGM wherein the party of the Second Part is listed in Sr. Panel (A / B / C / Supreme\nCourt Standing Counsel / Advocate on Record) for the initial period for three years,\nhowever subject to the satisfaction of MCGM.\nAND WHEREAS the party of the Second Part has agreed to accept the\nEmpanelment of Advocates for Sr. Panel (A / B / C / Supreme Court Standing\nCounsel / Advocate on Record) for MCGM subject to the terms and conditions\nhereinafter appearing.\nAND WHEREAS the party of the Second Part has agreed to comply with\nthe terms and conditions hereinafter appearing and is desirous of recording the same\nsubject to compliance of which the Empanelment as aforesaid has been approved by\nthe MCGM in favour of the party of the Second Part.\nNOW THIS AGREEMENT",
+  "total_clauses": 3,
+  "total_clauses_extracted": 3,
+  "analysis_limited": false,
+  "llm_reasoning_calls": 0,
+  "high_risk": 0,
+  "medium_risk": 0,
+  "low_risk": 3,
+  "overall_risk_score": 30,
+  "overall_risk_level": "LOW RISK",
+  "clauses": [
+    {
+      "clause_id": 1,
+      "heading": "General Clause",
+      "original_clause": "A G R E E M E N T This Agreement is made and entered into at Mumbai, and effective on this __________ day of____________ of Two Thousand Eighteen. BETWEEN The Municipal Corporation of Greater Mumbai a body corporate having perpetual succession and a common seal constituted by the Mumbai Municipal Corporation Act 1888, hereinafter referred to “MCGM” REPRESENTED BY Smt. Nidhi Choudhari, Deputy Municipal Commissioner (Special), having office at 3rd Floor, Annexe Building, Municipal Head Office, Mahapalika Marg, Mumbai- 400001, hereinafter referred to as “DMC(Special)” (which expression shall unless repugnant to the context or meaning thereof be deemed to mean and include the successor or successors for the time being holding the office of the Deputy Municipal Commissioner (Special)) of the First Part; AND Shri/ Smt. ________________________________, an Indian Inhabitant of having Sanad Registration No. ________________________ of ___________ and being the Member of _______________ Bar Association of the ____________ Court; hereinafter referred to as “Sr. Panel Advocate” (which expression shall unless repugnant to the context or meaning thereof be deemed to mean and include his heirs, executors, administrators and assigns) of the Second Part; WHEREAS the Municipal Commissioner for Greater Mumbai has interallia deputed under Section 56 of the Mumbai Municipal Corporation Act, 1888 his powers, functions and duties to the Deputy Municipal Commissioner (Special), for purpose of this Agreement. AND WHEREAS the Municipal Commissioner vide its order under no. MGC/A/4503 dated 10.10.2017 had accorded sanction for Empanelment of Advocates for Sr.",
+      "risk_level": "LOW",
+      "risk_score": 10,
+      "category": "Preamble & Parties",
+      "detected_issue": "Standard identification of parties, statutory authority delegation, and introductory recitals.",
+      "classifier": "llm_semantic",
+      "confidence": 0.95,
+      "reason": "This clause does not appear to create a significant legal risk based on the semantic assessment.",
+      "action": "Review the commercial terms and surrounding clauses before signing.",
+      "safer_clause": "A G R E E M E N T This Agreement is made and entered into at Mumbai, and effective on this __________ day of____________ of Two Thousand Eighteen. BETWEEN The Municipal Corporation of Greater Mumbai a body corporate having perpetual succession and a common seal constituted by the Mumbai Municipal Corporation Act 1888, hereinafter referred to “MCGM” REPRESENTED BY Smt. Nidhi Choudhari, Deputy Municipal Commissioner (Special), having office at 3rd Floor, Annexe Building, Municipal Head Office, Mahapalika Marg, Mumbai- 400001, hereinafter referred to as “DMC(Special)” (which expression shall unless repugnant to the context or meaning thereof be deemed to mean and include the successor or successors for the time being holding the office of the Deputy Municipal Commissioner (Special)) of the First Part; AND Shri/ Smt. ________________________________, an Indian Inhabitant of having Sanad Registration No. ________________________ of ___________ and being the Member of _______________ Bar Association of the ____________ Court; hereinafter referred to as “Sr. Panel Advocate” (which expression shall unless repugnant to the context or meaning thereof be deemed to mean and include his heirs, executors, administrators and assigns) of the Second Part; WHEREAS the Municipal Commissioner for Greater Mumbai has interallia deputed under Section 56 of the Mumbai Municipal Corporation Act, 1888 his powers, functions and duties to the Deputy Municipal Commissioner (Special), for purpose of this Agreement. AND WHEREAS the Municipal Commissioner vide its order under no. MGC/A/4503 dated 10.10.2017 had accorded sanction for Empanelment of Advocates for Sr.",
+      "negotiation_advice": "This clause appears generally standard, but the commercial terms should still be reviewed before signing.",
+      "similar_clauses": []
+    },
+    {
+      "clause_id": 2,
+      "heading": "General Clause",
+      "original_clause": "Panel (A, B and C) of MCGM, who have experience in handling court matters in the Hon'ble Supreme Court of India and in the Hon'ble High Courts, on behalf of MCGM. AND WHEREAS accordingly the MCGM had invited Expression of Interests (EOIs) in the prescribed format through E-mail from eligible candidates for Empanelment of Advocates for Sr. Panel 'A', 'B' & 'C' of MCGM for handling court matters in the Hon'ble Supreme Court of India and in the Hon'ble High Courts on behalf of MCGM. AND WHEREAS the party of the Second Part has shown willingness to represent the MCGM as an Advocate of Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for the MCGM, and has submitted Declaration to that effect, whereby agreeing to have read and understood the terms and conditions of the empanelment as displayed on MCGM portal and to abide by the same and to maintain absolute secrecy about the cases of MCGM as required under the Act, Rules and Regulations there under. AND WHEREAS it is felt prudent to utilize, the expertise and experience of the party of the Second Part by empanelment as an Advocate of Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for the MCGM AND WHEREAS the Municipal Commissioner vide its order under no. MGC/F/6674 dtd. 25.06.2018 has granted sanction for lists of empaneled Advocates of Sr.",
+      "risk_level": "LOW",
+      "risk_score": 15,
+      "category": "Recitals & Background",
+      "detected_issue": "Recital recording the empanelment background, reference to portal terms, and statutory professional secrecy.",
+      "classifier": "llm_semantic",
+      "confidence": 0.92,
+      "reason": "This clause does not appear to create a significant legal risk based on the semantic assessment.",
+      "action": "Review the commercial terms and surrounding clauses before signing.",
+      "safer_clause": "Panel (A, B and C) of MCGM, who have experience in handling court matters in the Hon'ble Supreme Court of India and in the Hon'ble High Courts, on behalf of MCGM. AND WHEREAS accordingly the MCGM had invited Expression of Interests (EOIs) in the prescribed format through E-mail from eligible candidates for Empanelment of Advocates for Sr. Panel 'A', 'B' & 'C' of MCGM for handling court matters in the Hon'ble Supreme Court of India and in the Hon'ble High Courts on behalf of MCGM. AND WHEREAS the party of the Second Part has shown willingness to represent the MCGM as an Advocate of Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for the MCGM, and has submitted Declaration to that effect, whereby agreeing to have read and understood the terms and conditions of the empanelment as displayed on MCGM portal and to abide by the same and to maintain absolute secrecy about the cases of MCGM as required under the Act, Rules and Regulations there under. AND WHEREAS it is felt prudent to utilize, the expertise and experience of the party of the Second Part by empanelment as an Advocate of Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for the MCGM AND WHEREAS the Municipal Commissioner vide its order under no. MGC/F/6674 dtd. 25.06.2018 has granted sanction for lists of empaneled Advocates of Sr.",
+      "negotiation_advice": "This clause appears generally standard, but the commercial terms should still be reviewed before signing.",
+      "similar_clauses": []
+    },
+    {
+      "clause_id": 3,
+      "heading": "General Clause",
+      "original_clause": "Panel (A, B, C, Supreme Court Standing Counsel, Advocate on Record) for MCGM wherein the party of the Second Part is listed in Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for the initial period for three years, however subject to the satisfaction of MCGM. AND WHEREAS the party of the Second Part has agreed to accept the Empanelment of Advocates for Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for MCGM subject to the terms and conditions hereinafter appearing. AND WHEREAS the party of the Second Part has agreed to comply with the terms and conditions hereinafter appearing and is desirous of recording the same subject to compliance of which the Empanelment as aforesaid has been approved by the MCGM in favour of the party of the Second Part. NOW THIS AGREEMENT",
+      "risk_level": "LOW",
+      "risk_score": 20,
+      "category": "Recitals & Tenure Condition",
+      "detected_issue": "Recital noting that the three-year empanelment duration is subject to the unilateral satisfaction of the authority.",
+      "classifier": "llm_semantic",
+      "confidence": 0.9,
+      "reason": "This clause does not appear to create a significant legal risk based on the semantic assessment.",
+      "action": "Review the commercial terms and surrounding clauses before signing.",
+      "safer_clause": "Panel (A, B, C, Supreme Court Standing Counsel, Advocate on Record) for MCGM wherein the party of the Second Part is listed in Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for the initial period for three years, however subject to the satisfaction of MCGM. AND WHEREAS the party of the Second Part has agreed to accept the Empanelment of Advocates for Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for MCGM subject to the terms and conditions hereinafter appearing. AND WHEREAS the party of the Second Part has agreed to comply with the terms and conditions hereinafter appearing and is desirous of recording the same subject to compliance of which the Empanelment as aforesaid has been approved by the MCGM in favour of the party of the Second Part. NOW THIS AGREEMENT",
+      "negotiation_advice": "This clause appears generally standard, but the commercial terms should still be reviewed before signing.",
+      "similar_clauses": []
+    }
+  ],
+  "missing_clauses": [
+    {
+      "missing_clause": "Scope of Services and Duties.",
+      "reason": "The agreement cuts off before establishing the substantive obligations, duties, and scope of legal representation required of the empaneled advocate.",
+      "suggested_clause": "The Advocate shall provide legal representation, advice, drafting, and appearance services in matters assigned by MCGM before designated courts, act diligently in the best interests of MCGM, attend hearings without unauthorized absence, and comply with all instructions and procedural guidelines issued by MCGM."
+    },
+    {
+      "missing_clause": "Fees, Expenses, and Billing Process.",
+      "reason": "The document lacks provisions defining applicable fee schedules, reimbursement of disbursements, invoicing procedures, and timelines for payment.",
+      "suggested_clause": "MCGM shall pay the Advocate professional fees in accordance with the prescribed fee schedule approved for the applicable Panel. Invoices detailing case numbers, court appearances, and incurred out-of-pocket expenses must be submitted with certified copies of daily orders or pleadings, payable by MCGM within sixty (60) days of verification."
+    },
+    {
+      "missing_clause": "Term and Termination.",
+      "reason": "While recitals mention an initial three-year period, there are no operative conditions defining renewal, termination for convenience, or de-empanelment for default.",
+      "suggested_clause": "This Agreement shall be valid for three (3) years from the effective date unless terminated earlier. MCGM reserves the right to de-empanel the Advocate and terminate this Agreement with thirty (30) days' written notice, or immediately without notice in cases of professional misconduct, conflict of interest, or gross negligence."
+    },
+    {
+      "missing_clause": "Confidentiality and Professional Privilege.",
+      "reason": "Recitals briefly reference secrecy, but there is no enforceable operative clause safeguarding privileged communications, litigation strategy, and municipal records.",
+      "suggested_clause": "The Advocate shall maintain strict confidentiality regarding all information, files, litigation strategies, and documents received or created in connection with MCGM matters. The Advocate shall not disclose privileged communications to third parties or media during or after the term of this Agreement without prior written authorization from MCGM."
+    },
+    {
+      "missing_clause": "Return of Case Files and Documents.",
+      "reason": "The agreement fails to mandate the prompt surrender of case files, briefs, and client property upon termination, de-empanelment, or matter reassignment.",
+      "suggested_clause": "Upon the termination, de-empanelment, revocation of brief, or demand by MCGM, the Advocate shall forthwith hand over all original briefs, records, pleadings, evidence, court orders, and correspondence relating to assigned matters to MCGM without exercising any retaining lien."
+    },
+    {
+      "missing_clause": "Conflict of Interest.",
+      "reason": "There is no explicit restriction prohibiting the advocate from accepting briefs or advising parties adverse to MCGM.",
+      "suggested_clause": "The Advocate covenants not to advise, appear, act, or brief against MCGM in any litigation, arbitration, or proceeding during the subsistence of this empanelment, and shall immediately disclose any potential or actual conflict of interest to DMC (Special)."
+    },
+    {
+      "missing_clause": "Governing Law and Dispute Resolution.",
+      "reason": "The agreement contains no operative framework specifying applicable substantive law, forum, or dispute settlement mechanisms.",
+      "suggested_clause": "This Agreement shall be governed by and construed in accordance with the laws of India. Any disputes arising out of or in connection with this Agreement shall be referred to the sole arbitration of the Municipal Commissioner of MCGM or their nominee, and the courts in Mumbai shall have exclusive jurisdiction."
+    },
+    {
+      "missing_clause": "Standard of Care and Professional Liability.",
+      "reason": "The agreement omits clauses defining required professional standards, consequences of neglect, and indemnification for willful misconduct.",
+      "suggested_clause": "The Advocate shall exercise due skill, diligence, and professional care in handling assigned matters. The Advocate shall be liable for and indemnify MCGM against direct losses or damages arising from willful default, gross professional misconduct, or unauthorized compromise of MCGM claims."
+    }
+  ],
+  "summary": {
+    "document_type": "Legal Document",
+    "ai_summary": "The Municipal Corporation of Greater Mumbai is a body corporate havingperpetual succession and a common seal. The party of the Second Part has shown willingness torepresent the MCGM as an Advocate of Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for the initial period for three years. The terms of the agreement are as follows:",
+    "parties": [],
+    "important_dates": [],
+    "financial_terms": [
+      "rs,"
+    ],
+    "key_terms_and_obligations": [],
+    "important_clauses": [],
+    "key_legal_terms": [
+      "Agreement"
+    ],
+    "statistics": {
+      "total_words": 634,
+      "total_sentences": 27,
+      "legal_terms_detected": 1
+    },
+    "formatted_text": "LEGAL DOCUMENT SUMMARY\n======================\n\nDOCUMENT TYPE\n------------\nLegal Document\n\nSUMMARY\n-------\nThe Municipal Corporation of Greater Mumbai is a body corporate havingperpetual succession and a common seal. The party of the Second Part has shown willingness torepresent the MCGM as an Advocate of Sr. Panel (A / B / C / Supreme Court Standing Counsel / Advocate on Record) for the initial period for three years. The terms of the agreement are as follows:\n\nFINANCIAL TERMS\n---------------\n• rs,\n\nKEY LEGAL TERMS\n----------------\n• Agreement\n\nDOCUMENT STATISTICS\n-------------------\n• Words: 634\n• Sentences: 27\n• Legal terms detected: 1\n\nNote: This is an AI-generated summary for easier understanding. It should not be treated as legal advice.",
+    "disclaimer": "This is an AI-generated summary for easier understanding. It should not be treated as legal advice."
+  },
+  "translation": {
+    "english": "## What this document is\nThis is a legal agreement to hire a lawyer for court cases.\nThe Municipal Corporation of Greater Mumbai wants to appoint a senior lawyer to represent them in court for **three years**.\n\n## Who is involved\n- Municipal Corporation of Greater Mumbai (MCGM), the local government body.\n- An advocate chosen as a senior panel lawyer (Advocate of Sr. Panel: A / B / C / Supreme Court Standing Counsel / Advocate on Record).\n\n## Important dates\n- The agreement is meant to last for a starting period of **three years**.\n\n## Money and payments\n- The document does not list any fee amount, billing steps, or payment dates.\n\n## Main duties and rights\n- The lawyer agrees to represent MCGM in legal matters.\n- The full list of duties is missing because the text cuts off early.\n\n## Risks to watch\n- Payment details are completely blank, which can lead to unpaid bills and fee fights.\n- The document cuts off mid-way, which leaves the lawyer's exact responsibilities completely unclear.\n- There are no rules on how to end the contract, which makes it hard to leave the job cleanly.\n\n## Missing protections\n- Clear fee rates, expense refunds, and billing deadlines.\n- Clear rules on how to end the deal early or renew it.\n- A full list of legal work and cases the lawyer must handle.\n- Strong clauses to protect private government information and case strategy.\n- A requirement to return all case files and official papers when the work stops.",
+    "hindi": "## यह दस्तावेज़ क्या है\nदस्तावेज़ का प्रकार: कानूनी दस्तावेज़ (Legal Document)\nयह Municipal Corporation of Greater Mumbai (MCGM) द्वारा एक वकील को अपने मामलों की पैरवी करने के लिए पैनल में रखने का कानूनी समझौता है। यह नियुक्ति शुरुआत में **3 years** के लिए की जा रही है।\n\n## कौन-कौन शामिल है\n- Municipal Corporation of Greater Mumbai (MCGM)\n- दूसरी पार्टी: एक वकील (Advocate of Sr. Panel - A / B / C / Supreme Court Standing Counsel / Advocate on Record)\n\n## ज़रूरी तारीखें\n- शुरुआत की तय अवधि: **3 years**\n\n## पैसे और भुगतान\n- फीस और भुगतान का ब्योरा अधूरा है (दस्तावेज़ में केवल **rs,** लिखा है)।\n\n## लापता सुरक्षा नियम\n- काम और ज़िम्मेदारियों का साफ़ न होना: वकील को क्या-क्या काम करने होंगे, यह दस्तावेज़ में नहीं लिखा है।\n- फीस और बिलिंग की जानकारी न होना: वकील की फीस, केस के खर्चे और पैसे चुकाने की समय-सीमा तय नहीं है।\n- समझौता खत्म करने की शर्तें न होना: **3 years** पूरे होने पर काम आगे बढ़ाने या बीच में हटाने का कोई नियम नहीं है।\n- गोपनीयता की पक्की शर्त न होना: केस से जुड़ी गुप्त बातें और कानूनी रणनीतियाँ सुरक्षित रखने का कोई कड़ा नियम नहीं है।\n- केस की फाइलें लौटाने का नियम न होना: काम समाप्त होने पर वकील द्वारा केस की फाइलें और कागज़ात वापस सौंपने की कोई शर्त नहीं है।",
+    "marathi": "## हा दस्तऐवज कशाबद्दल आहे\nहा एक कायदेशीर करार आहे. मुंबई महानगरपालिकेच्या कोर्टातील कामांसाठी वकिलाची नेमणूक करण्याबाबत हा कागद आहे.\n\n## यात कोण कोण सामील आहे\n- Municipal Corporation of Greater Mumbai (MCGM / मुंबई महानगरपालिका).\n- नेमणूक होणारे वकील (Advocate of Sr. Panel - A / B / C / Supreme Court Standing Counsel / Advocate on Record).\n\n## महत्त्वाच्या तारखा\n- सुरुवातीचा कामाचा कालावधी: **३ वर्षे**.\n\n## पैसे आणि पेमेंट\n- फी किंवा रकमेबद्दल कागदपत्रात कोणतीही माहिती स्पष्ट नाही (फक्त 'rs,' असे अर्धवट लिहिले आहे).\n\n## कागदपत्रात नसलेल्या महत्त्वाच्या गोष्टी\n- वकिलाने नेमकी कोणती कामे आणि जबाबदाऱ्या सांभाळायच्या आहेत, हे लिहिलेले नाही.\n- फी किती मिळणार, कोर्टाचा खर्च कसा मिळणार आणि बिलाचे पैसे कधी होणार, याचे नियम नाहीत.\n- **३ वर्षांनंतर** करार वाढवणे किंवा मधेच रद्द करणे याविषयी अटी दिलेल्या नाहीत.\n- महापालिकेची आणि केसची गुप्त माहिती सुरक्षित ठेवण्याबाबत कडक नियम नाहीत.\n- काम संपल्यावर केसच्या फायली आणि कागदपत्रे परत करण्याबाबत कोणताही नियम नाही."
+  },
+  "translation_errors": [],
+  "report_path": "reports\\legal_risk_report_20261016_083053_725814.json"
+}

@@ -149,20 +149,77 @@ NEGOTIATION_RULES = {
 )
 }
 
-def suggest_negotiation(risk_result: dict) -> str:
+# Topic rules: used when the exact issue label is not in NEGOTIATION_RULES
+# (e.g. the LLM names the issue differently). Best keyword match wins.
+TOPIC_RULES = [
+    (("non-compete", "not to compete", "compete with", "competing business", "restraint of trade", "restrictive covenant"),
+     "Ask to limit the non-compete by time (6-12 months), place and type of work, or replace it with a narrower non-solicitation and confidentiality clause."),
+    (("non-solicit", "solicit", "poach"),
+     "Limit the non-solicitation period, name the restricted clients or staff clearly, and allow normal professional contact that is not meant to win business."),
+    (("intellectual property", "invention", "copyright", "work product", "patent", "source code"),
+     "Limit company ownership to work made for the company during employment, and exclude your earlier work and personal projects that use no company resources."),
+    (("confidential", "trade secret", "non-disclosure", "proprietary information"),
+     "Define what counts as confidential, add standard exceptions (public or already known information, legal disclosure), and set a fixed period except for trade secrets."),
+    (("liquidated damages", "bond", "penalty", "training cost", "recover", "reimburse the company", "service agreement period"),
+     "Ask that any bond or repayment equal only the actual, documented cost, reduce it step by step as the service period passes, and drop fixed penalty amounts."),
+    (("indemnif", "hold harmless", "liable for", "liability"),
+     "Ask for a cap on liability, cover only proven losses from your own wilful misconduct or negligence, and make indemnity mutual."),
+    (("terminat", "dismiss", "discharge", "retrench", "without notice", "notice period", "garden leave"),
+     "Ask for a written notice period (such as 30 days) on both sides, clear grounds for termination, and a chance to fix the problem first. Keep immediate termination only for proven serious misconduct."),
+    (("salary", "wages", "remuneration", "compensation", "bonus", "incentive", "withhold", "deduct", "increment", "payment"),
+     "Ask that earned salary and dues are never withheld or reduced without written reasons. Keep performance pay separate from fixed salary and state the payment dates."),
+    (("probation", "confirmation"),
+     "Ask for a fixed probation period, written review criteria, and written confirmation by a set date."),
+    (("leave", "working hours", "overtime", "holiday", "shift"),
+     "Ask for stated working hours, paid leave and overtime rules in line with the law, and written approval limits for schedule changes."),
+    (("transfer", "relocat", "place of work", "posting", "deputation"),
+     "Ask for reasonable advance notice, relocation support, and your consent for transfers outside the current city or role."),
+    (("amend", "modify", "modification", "change the terms", "policy", "alter"),
+     "Ask that any material change needs your written consent and advance notice, with a clear effective date."),
+    (("arbitrat", "jurisdiction", "governing law", "dispute", "court"),
+     "Ask for a neutral, mutually agreed arbitrator, a convenient venue, and mediation first. Keep your right to approach courts for statutory claims."),
+    (("monitor", "surveillance", "biometric", "personal data", "privacy", "data protection"),
+     "Ask that monitoring is limited to company systems and lawful business use, with written notice, your consent where needed, and limits on how long data is kept."),
+    (("moonlight", "outside work", "exclusive service", "other employment", "full time and attention"),
+     "Ask to allow work that does not compete or clash with your job, and to need only written approval, not blanket permission, for outside activity."),
+    (("resign", "notice pay", "buy out", "buyout"),
+     "Ask for a short, mutual notice period, an option to pay in lieu of notice, and release of your documents and dues on exit."),
+    (("assign", "delegate", "subcontract"),
+     "Ask that rights and duties cannot be transferred without both sides' written consent."),
+]
+
+
+def _topic_advice(text: str):
+    best, best_score = None, 0
+    for keywords, advice in TOPIC_RULES:
+        score = sum(1 for k in keywords if k in text)
+        if score > best_score:
+            best, best_score = advice, score
+    return best
+
+
+def suggest_negotiation(risk_result: dict, clause_text: str = "") -> str:
     """
-    Return issue-specific negotiation guidance.
+    Return clause-specific negotiation guidance:
+    1) exact issue rule, 2) topic rule from issue/category/clause text,
+    3) generic by risk level.
     """
-    issue = str(
-        risk_result.get("detected_issue", "")
-    ).strip()
+    issue = str(risk_result.get("detected_issue", "")).strip()
 
     if issue in NEGOTIATION_RULES:
         return NEGOTIATION_RULES[issue]
 
-    risk_level = str(
-        risk_result.get("risk_level", "LOW")
-    ).upper()
+    haystack = " ".join([
+        issue,
+        str(risk_result.get("category", "")),
+        str(clause_text or "")[:1500],
+    ]).lower()
+
+    topic = _topic_advice(haystack)
+    if topic:
+        return topic
+
+    risk_level = str(risk_result.get("risk_level", "LOW")).upper()
 
     if risk_level == "HIGH":
         return (
@@ -179,4 +236,5 @@ def suggest_negotiation(risk_result: dict) -> str:
 
     return (
         "This clause appears generally standard, but the commercial "
-        "terms should still be reviewed before signing.")
+        "terms should still be reviewed before signing."
+    )
